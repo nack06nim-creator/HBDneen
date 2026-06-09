@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Neen</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 10;
+        }
+        .page {
+            display: none;
+        }
+        .active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            color: #ff4d6d;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        p {
+            color: #4a4a4a;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .btn {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1.1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s;
+            box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
+            margin: 5px;
+        }
+        .btn:hover {
+            background-color: #ff758f;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            box-shadow: 0 4px 10px rgba(108, 117, 125, 0.3);
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        /* ปุ่มฟังเพลงพิเศษ */
+        .btn-music {
+            background-color: #b5179e;
+            box-shadow: 0 4px 10px rgba(181, 23, 158, 0.3);
+            margin-bottom: 20px;
+            width: 80%;
+            font-weight: bold;
+        }
+        .btn-music:hover {
+            background-color: #7209b7;
+        }
+        .cake-emoji {
+            font-size: 5rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .envelope-emoji {
+            font-size: 5rem;
+            margin-bottom: 15px;
+        }
+        .grid-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .grid-images img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .signature {
+            font-weight: bold;
+            color: #ff4d6d;
+            margin-top: 15px;
+            font-size: 1.2rem;
+        }
+        .emoji-fall {
+            position: fixed;
+            top: -10%;
+            z-index: 1;
+            font-size: 24px;
+            user-select: none;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div id="page1" class="page active">
+        <span class="cake-emoji">🎂</span>
+        <h1>Happy birthday นะนีน</h1>
+        <button class="btn" onclick="nextPage(2)">Next</button>
+    </div>
+
+    <div id="page2" class="page">
+        <span class="envelope-emoji">💌</span>
+        <h1>เปิดอ่านได้ไหม</h1>
+        <div style="margin-top: 20px;">
+            <button class="btn" onclick="nextPage(3)">Yes</button>
+            <button class="btn btn-secondary" onclick="nextPage('no')">No</button>
+        </div>
+    </div>
+
+    <div id="pageNo" class="page">
+        <span style="font-size: 5rem;">😭</span>
+        <h1>ม่ายยย กดใหม่เดี๋ยวนี้</h1>
+        <button class="btn" onclick="nextPage(2)">Again</button>
+    </div>
+
+    <div id="page3" class="page">
+        <button class="btn btn-music" onclick="goToYouTube()">อยากฟังเพลงไหมกดสิ 🎵</button>
+
+        <h1>สุขสันต์วันเกิดนัซนีนนะ 🐈</h1>
+        <p>วันที่ 20 มิถุนายน หรือวันนี้เป็นวันที่นีนเกิดมาลืมตาดูโลก พร้อมที่จะใช้ชีวิตอย่างมีความสุข วันเกิดปีนี้แน็คขออวยพรให้นีนมีสุขภาพที่แข็งแรงทั้งกายและใจ มีคนรักรอบตัวนีน ไม่เจ็บไข้ได้ป่วย มีความสุขมากๆ คิดอะไรก็ขอให้เป็นจริง ขอบคุณที่ได้มาเจอกันนะ</p>
+        
+        <p class="signature">ด้วยรักและห่วงใยตลอดไปจากแน็ค</p>
+        
+        <div class="grid-images">
+            <img src="pic1.jpg" alt="รูปที่ 1">
+            <img src="pic2.jpg" alt="รูปที่ 2">
+            <img src="pic3.jpg" alt="รูปที่ 3">
+            <img src="pic4.jpg" alt="รูปที่ 4">
+        </div>
+    </div>
+
+</div>
+
+<script>
+    let rainInterval;
+
+    function nextPage(pageNumber) {
+        document.getElementById('page1').classList.remove('active');
+        document.getElementById('page2').classList.remove('active');
+        document.getElementById('pageNo').classList.remove('active');
+        document.getElementById('page3').classList.remove('active');
+
+        clearInterval(rainInterval);
+
+        if (pageNumber === 'no') {
+            document.getElementById('pageNo').classList.add('active');
+        } else {
+            document.getElementById('page' + pageNumber).classList.add('active');
+            if (pageNumber === 3) {
+                startEmojiRain();
+            }
+        }
+    }
+
+    function startEmojiRain() {
+        const emojis = ['🐈', '💕', '🎂'];
+        
+        rainInterval = setInterval(() => {
+            const emojiEl = document.createElement('div');
+            emojiEl.classList.add('emoji-fall');
+            emojiEl.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            emojiEl.style.left = Math.random() * 100 + 'vw';
+            
+            const duration = Math.random() * 3 + 3;
+            emojiEl.style.animationDuration = duration + 's';
+            emojiEl.style.fontSize = Math.random() * 20 + 20 + 'px';
+            
+            document.body.appendChild(emojiEl);
+            
+            setTimeout(() => {
+                emojiEl.remove();
+            }, duration * 1000);
+            
+        }, 300);
+    }
+
+    // ฟังก์ชันเปิดลิงก์ YouTube ไปที่แท็บใหม่ทันที
+    function goToYouTube() {
+        window.open('https://youtu.be/PMivT7MJ41M?si=m1JNOUHd6zkaNgr1', '_blank');
+    }
+</script>
+
+</body>
+</html>
